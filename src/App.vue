@@ -18,16 +18,21 @@
       </div>
       <div class = "block-count">
         <p> Current Block Count</p>
-        <p class = "number of blocks">{{ fetch(`${this.url_base}"/blocks"`)}}</p>
+        <p class = "number of blocks">{{blockchain[0].height}}</p>
       </div>
       <table class="blockchain-tabel">
         <tr>
-          <th class = "tabel-header">Block Number</th>
-          <th class = "tabel-header">Address</th>
-          <th class = "tabel-header">Hash</th>
+          <th class = "tabel-header">Block Height</th>
           <th class = "tabel-header">Timestamp</th>
+          <th class = "tabel-header">Number of Transactions</th>
+          <th class = "tabel-header">Hash</th>
         </tr>
-                            
+        <tr v-for="block in blockchain" :key="block.height" >
+          <td>{{ block.height }}</td>
+          <td>{{ block.timestamp }}</td>
+          <td>{{ block.transactions.length }}</td>
+          <td>{{ block.hash }}</td>
+        </tr>   
       </table>
     </body>
   </div>
@@ -38,29 +43,33 @@ export default {
   name: 'app',
   data () {
     return {
-      url_base: 'https://xi.test.network/',
+      api_url: 'https://xi.test.network/blocks',
       query: '',
       blockNumber: {},
-      Address: {},
-      Hash: {},
-      Timestamp: {},
+      address: {},
+      hash: {},
+      timestamp: {},
+      height: {},
+      blockchain: {},
     }
   },
-  methods: {
-    fetchWeather (e) {
-      if (e.key == "Enter") {
-        fetch(`${this.url_base}"/blocks"`)
-          .then(res => {
-            return res.json();
-          }).then(this.setResults);
-      }
-    },
+
+  mounted(){
+    fetch(`${this.api_url}`)
+      .then(res => res.json())
+      .then(data => this.blockchain = data)
+      .catch(err => console.log(err.message))
+  },
+
+
     
   }
-}
+
 </script>
 
 <style>
+
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
