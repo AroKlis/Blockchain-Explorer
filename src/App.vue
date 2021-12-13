@@ -12,13 +12,22 @@
           placeholder="Search..."
           v-model="query"
         />
+        <button @click="search()"><i class="fas fa-search"></i></button>
       </div>
       <div class = "search-result">
-        
+        <span> Block Height: {{result[0].height}} </span>
+        <span> Timestamp: {{result[0].timestamp}} </span>
+        <span> Miner: {{result[0].miner}} </span>
+        <span> Leadger Hash: {{result[0].ledgerHash}} </span>
+        <span> Parent Hash: {{result[0].parentHash}} </span>
+        <span> Hash: {{result[0].hash}} </span> 
       </div>
       <div class = "block-count">
         <p> Current Block Count</p>
         <p class = "number of blocks">{{blockchain[0].height}}</p>
+      </div>
+      <div class = "search-results">
+
       </div>
       <table class="blockchain-tabel">
         <tr>
@@ -51,19 +60,31 @@ export default {
       timestamp: {},
       height: {},
       blockchain: {},
+      result:{}
     }
   },
 
   mounted(){
+
     fetch(`${this.api_url}`)
       .then(res => res.json())
       .then(data => this.blockchain = data)
       .catch(err => console.log(err.message))
+      
   },
 
+  methods: {
 
-    
+    search(){
+      this.result = this.blockchain.filter( x=> ((x.height == this.query) || (x.timestamp == this.query) || (x.hash == this.query)))
+      alert(this.result)
+
+    }   
+  
   }
+}
+  
+    
 
 </script>
 
@@ -80,9 +101,9 @@ export default {
 }
 
 html{
-  padding: 0;
-  margin: 0;
-  border: 0;
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
   background-color: rgba(0, 0, 0, 0.2);
 
 }
@@ -109,6 +130,7 @@ body {
   text-align: left;
   display: block;
   padding-left: 1rem;
+  padding-right: 0;
   }
 .search-box p{
   font-size: 2em;
@@ -122,21 +144,38 @@ body {
 }
 
 .tabel-header{
-  width: 30%;
+  width: 2%;
   font-size: 1.5em;  
+  background-color: rgba(255, 255, 255, 0.5);
+  
 }
 
 .block-count p{
-  color: rgb(33, 216, 33);
   font-weight: 500;
   font-size: 1.2em;
   background-color: rgba(255, 255, 255, 0.9);
   margin: auto;
-  width: 20%;
+  width: 100%;
   text-align: center;
   
 }
+.search-box button{
+  background-color:transparent;
+  border:0;
+  margin:0;
+  padding: 0;
+  height: 3em;
+  width: 10%;
+  background-color:rgb(255, 255, 255);
+  border-radius: 5px;
 
+}
+
+.search-results{
+  width: 80%;
+}
+span {
+  padding: 10px;
+}
 </style>
-
 
