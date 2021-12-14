@@ -15,12 +15,17 @@
         <button @click="search()"><i class="fas fa-search"></i></button>
       </div>
       <div class = "search-result">
-        <span> Block Height: {{result[0].height}} </span>
-        <span> Timestamp: {{result[0].timestamp}} </span>
-        <span> Miner: {{result[0].miner}} </span>
-        <span> Leadger Hash: {{result[0].ledgerHash}} </span>
-        <span> Parent Hash: {{result[0].parentHash}} </span>
-        <span> Hash: {{result[0].hash}} </span> 
+        <div v-if="result === 0">
+          Search results
+        </div>
+        <div v-else>
+          <span> Block Height: {{result[0].height}} </span>
+          <span> Timestamp: {{result[0].timestamp}} </span>
+          <span> Miner: {{result[0].miner}} </span>
+          <span> Leadger Hash: {{result[0].ledgerHash}} </span>
+          <span> Parent Hash: {{result[0].parentHash}} </span>
+          <span> Hash: {{result[0].hash}} </span> 
+        </div>
       </div>
       <div class = "block-count">
         <p> Current Block Count</p>
@@ -70,6 +75,7 @@ export default {
       .then(res => res.json())
       .then(data => this.blockchain = data)
       .catch(err => console.log(err.message))
+      this.result = 0
       
   },
 
@@ -77,7 +83,6 @@ export default {
 
     search(){
       this.result = this.blockchain.filter( x=> ((x.height == this.query) || (x.timestamp == this.query) || (x.hash == this.query)))
-      alert(this.result)
 
     }   
   
