@@ -2,7 +2,7 @@
   <div id="app">
 
     <header>
-      <img src="https://xe.network/assets/logo.svg"/>
+      <img src="https://cdn.edge.network/assets/img/edge-logo-green.svg"/>
     </header>
 
     <body>
@@ -10,13 +10,15 @@
       <!-- Search box -->
       <div class="search-box">
         <p>Search the Xi Blockchain</p>
-        <input 
-          type="text" 
-          class="search-bar" 
-          placeholder="Enter the height, timestamp or hash..."
-          v-model="query"
-        />
-        <button @click="search()"><i class="fas fa-search"></i></button>
+        <div>
+          <input 
+            type="text" 
+            class="search-bar" 
+            placeholder="Enter the height, timestamp or hash..."
+            v-model="query"
+          />
+          <button @click="search()"><i class="fas fa-search"></i></button>
+        </div>
       </div>
 
       <!-- Displays additional information of the block requested -->
@@ -46,7 +48,7 @@
         <tr>
           <th class = "tabel-header">Block Height</th>
           <th class = "tabel-header">Timestamp</th>
-          <th class = "tabel-header">Number of Transactions</th>
+          <th class = "tabel-header">Transaction Count</th>
           <th class = "tabel-header">Hash</th>
         </tr>
 

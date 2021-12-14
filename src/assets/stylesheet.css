@@ -4,20 +4,13 @@
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-    margin-top: 60px;
   }
   
   html{
-    padding: 0px;
-    margin: 0px;
-    border: 0px;
     background-color: rgba(0, 0, 0, 0.2);
-  
   }
   
   header{
-    margin:0;
-    padding: 0;
     background-color: rgba(0, 0, 0, 0.9);
   }
   
@@ -25,35 +18,37 @@
     background-color: rgba(255, 255, 255, 0.1);
     margin:0px;
     padding: 0px;
-    font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+    font-family: system-ui,Helvetica,Arial,sans-serif;
   }
   
   .search-box{
     background-color: rgba(0, 0, 0, 0.80);
     padding: 2.6rem;
-    border: 0px;
-    margin: 0px;
     color: white;
     text-align: left;
-    display: block;
     padding-left: 1rem;
-    padding-right: 0;
-    }
+  }
+
   .search-box p{
     font-size: 2em;
-    margin: 0%;
+    margin: 0px;
   }
+
   .search-bar{
     width: 80%;
     height: 3em;
-    border-radius: 5px;
-    
+    border-radius: 10px;
   }
-  
+
+  .blockchain-tabel{
+    width: 100%;
+    border: 1px black solid;
+  }
+
   .tabel-header{
-    width: 2%;
     font-size: 1.5em;  
     background-color: rgba(255, 255, 255, 0.5);
+    border: 1px black solid;
     
   }
   
@@ -61,26 +56,45 @@
     font-weight: 500;
     font-size: 1.2em;
     background-color: rgba(255, 255, 255, 0.9);
-    margin: auto;
+    margin: 0px;
+    padding: 0px;
     width: 100%;
     text-align: center;
+  }
+  
+  .search-result{
+    align-items: center;
+    padding: 10px;
+    margin: 0px;
+  }
+
+  span {
+    margin: 5px;
+    padding: 5px;
+    background-color: rgba(0,0,0,0.1);
+    border-radius: 5px;
+    border: 1px rgba(0,0,0,0.2) solid;
+    font-size: 1.2em;
+    font-weight: bold;
+    white-space: nowrap;
+    display: inline-block;
+  }
+
+  td{
+    font-size: 1.2em;
+    border: 1px black solid;
     
   }
-  .search-box button{
-    background-color:transparent;
-    border:0;
-    margin:0;
-    padding: 0;
-    height: 3em;
+
+  button{
+    height: 3.4em;
     width: 10%;
     background-color:rgb(255, 255, 255);
-    border-radius: 5px;
-  
+    border-radius: 10px;
+    cursor: pointer;
   }
-  
-  .search-results{
-    width: 80%;
-  }
-  span {
+
+  img{
+    height:3em;
     padding: 10px;
   }
